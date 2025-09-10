@@ -1,0 +1,1 @@
+This package is built on [package-template commit 596cabc](https://github.com/egokt/package-template/tree/596cabcd463fca3d0c1333d64dc079710e70cc2e). See its readme for the base setup for this package.
