@@ -123,6 +123,7 @@ jobs:
 
       - name: Publish
         working-directory: ${{ env.PACKAGE_PATH }}
+        if: ${{ env.SKIP_PUBLISH != 'true' }}
         run: |
           echo ${SKIP_PUBLISH}
           if [ "${SKIP_PUBLISH}" = "true" ]; then
