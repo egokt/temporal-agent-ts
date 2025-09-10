@@ -122,7 +122,7 @@ jobs:
         run: |
           if [ "$SKIP_PUBLISH" = "true" ]; then
             echo "Publish step skipped."; exit 0; fi
-          npm run publish
+          npm run ship
         # UPDATE THE ENVIRONMENT VARIABLES BELOW AS NEEDED *********************
         # If you are using npm repositories that require authentication,
         # uncomment the following env block and provide any needed
