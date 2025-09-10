@@ -20,16 +20,6 @@ env:
   # the on.push.tags and concurrency.group values below.
   PACKAGE_TAG_PREFIX: 'temporal-agent-ts'
 
-  # Package registry to publish to
-  # Some frequently used registries:
-  # npmjs: https://registry.npmjs.org/
-  # GitHub Packages: https://npm.pkg.github.com/
-  # IMPORTANT NOTE: If this repository requires authentication to access
-  # the registry, you must configure authentication in the NPMRC_CONTENTS below,
-  # and uncomment the relevant environment variables in the steps below.
-  #  Otherwise, the publish step will fail.
-  PACKAGE_REGISTRY: 'https://npm.pkg.github.com'
-
 on:
   push:
     tags:
