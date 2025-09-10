@@ -27,6 +27,7 @@
     "build:watch": "npm run build && concurrently 'tsc -p tsconfig.build.json -w' 'npm run monitor -- npm run copy-artifacts'",
     "monitor": "fswatch -0 ${npm_package_config_files_package} | xargs -n 1 -0 -I {}",
     "monitor:package": "fswatch -0 ${npm_package_config_files_package} | xargs -n 1 -0 -I {}",
+    "ci:check": "npm run test",
     "test": "NODE_OPTIONS=\"--experimental-vm-modules\" npx jest",
     "test:watch": "NODE_OPTIONS=\"--experimental-vm-modules\" npx jest --watch"
   },
