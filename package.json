@@ -1,5 +1,5 @@
 {
-  "name": "@egokt/temporal-agent-ts",
+  "name": "temporal-agent-ts",
   "description": "AI Agent infra running on the Temporal durable execution framework, written in typescript",
   "version": "0.0.1",
   "main": "./index.js",
