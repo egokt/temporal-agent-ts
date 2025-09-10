@@ -101,6 +101,8 @@ jobs:
         run: |
           PKG_NAME=$(jq -r '.name' package.json)
           PKG_VERSION=$(jq -r '.version' package.json)
+          npm view "$PKG_NAME@$PKG_VERSION" version --registry=${{ env.PACKAGE_REGISTRY }}
+          echo $?
           if npm view "$PKG_NAME@$PKG_VERSION" version --registry=${{ env.PACKAGE_REGISTRY }} > /dev/null 2>&1; then
             echo "Version $PKG_NAME@$PKG_VERSION already exists. Skipping publish."
             echo "SKIP_PUBLISH=true" >> $GITHUB_ENV
@@ -120,8 +122,11 @@ jobs:
       - name: Publish
         working-directory: ${{ env.PACKAGE_PATH }}
         run: |
-          if [ "$SKIP_PUBLISH" = "true" ]; then
-            echo "Publish step skipped."; exit 0; fi
+          echo ${SKIP_PUBLISH}
+          if [ "${SKIP_PUBLISH}" = "true" ]; then
+            echo "Publish step skipped.";
+            exit 0;
+          fi
           npm run ship
         # UPDATE THE ENVIRONMENT VARIABLES BELOW AS NEEDED *********************
         # If you are using npm repositories that require authentication,
