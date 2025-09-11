@@ -45,7 +45,7 @@ async function startup() {
     const workflowsPath = join(__dirname, 'workflows');
     console.log('Initializing Temporal worker with workflows at path:', workflowsPath);
     const connection = await NativeConnection.connect({
-      address: `${process.env.TEMPORAL_HOST ?? 'localhost'}:${process.env.TEMPORAL_PORT ?? '7233'}`,
+      address: `${process.env.TEMPORAL_SERVER_HOST ?? 'localhost'}:${process.env.TEMPORAL_SERVER_PORT ?? '7233'}`,
     });
 
     worker = await Worker.create({
