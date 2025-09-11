@@ -7,7 +7,7 @@ type Response = {
 
 // TODO: fix this linter issue in exprest-server :)
 // eslint-disable-next-line @typescript-eslint/no-empty-object-type
-const resspondAction = actionWoAuth<Response, {}, { userMessage: string }, {}>({
+const respondAction = actionWoAuth<Response, {}, { userMessage: string }, {}>({
   contextCreateFunction: () => ({}),
   sanitizeHeadersFunction: () => [null, {}],
   sanitizeParamsFunction: ({ unsanitizedParams }: { unsanitizedParams: { userMessage?: unknown } }) => [
@@ -28,7 +28,7 @@ const resspondAction = actionWoAuth<Response, {}, { userMessage: string }, {}>({
 
 // Add to router
 const router = express.Router();
-addActionRoute(router, '/respond', resspondAction);
+addActionRoute(router, '/respond', respondAction);
 
 const app = express();
 app.use('/api', router);
