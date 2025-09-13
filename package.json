@@ -34,10 +34,11 @@
     "lint:fix": "eslint src tests --fix",
     "lint:check": "eslint src tests --max-warnings 0 --no-fix",
     "lint:format": "npm run format:check",
-    "ci:check": "npm run lint:check && npm run format:check && npm run test",
+    "ci:check": "npm run lint:check && npm run format:check && npm run dependencies:check && npm run test",
     "test": "NODE_OPTIONS=\"--experimental-vm-modules\" npx jest",
     "test:watch": "NODE_OPTIONS=\"--experimental-vm-modules\" npx jest --watch",
-    "ship": "npm run build && cd build && npm publish && cd -"
+    "ship": "npm run build && cd build && npm publish && cd -",
+    "dependencies:check": "(find . -name package.json -not -path '*/node_modules/*' -and -not -path '*/build/*' -exec jq -r '.devDependencies, .dependencies | to_entries[] | \"{} -- \\(.key): \\(.value)\"' {} \\; | grep -E '^[^:]+:\\s+file:'; if [ $? -eq 1 ]; then exit 0; else echo \"Found dependencies to local packages, which is not allowed.\"; exit 1; fi)"
   },
   "devDependencies": {
     "@eslint/js": "^9.35.0",
